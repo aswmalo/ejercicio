@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="com.fj.ramirez_ejercicio_war_0.0.1-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>com.fj.ramirez.entities.OpeCotizaCreditos</class>
+    <class>com.fj.ramirez.entities.CatProductos</class>
+    <class>com.fj.ramirez.entities.CatPlazos</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://2.56.15.6:5432/ejerciciodb"/>
+      <property name="javax.persistence.jdbc.user" value="c3cs"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="83C1ut#r1mK05"/>
+    </properties>
+  </persistence-unit>
+</persistence>
