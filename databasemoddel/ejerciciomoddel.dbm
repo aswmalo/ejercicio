@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.3" use-changelog="false" last-position="0,0" last-zoom="1" max-obj-count="4"
+	 default-schema="public" default-owner="postgres">
+<database name="ejerciciodb" is-template="false" allow-conns="true">
+</database>
+
+<schema name="public" layer="0" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<table name="cat_plazos" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="320" y="100"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="numero_semanas">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="tasa_normal">
+		<type name="numeric" length="10" precision="4"/>
+	</column>
+	<column name="tasa_puntual">
+		<type name="numeric" length="10" precision="4"/>
+	</column>
+	<constraint name="cat_plazos_pk" type="pk-constr" table="public.cat_plazos">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<initial-data>
+<![CDATA[id•numero_semanas•tasa_normal•tasa_puntual⸣
+0•1•1•.5]]>
+	</initial-data>
+</table>
+
+<table name="cat_productos" layer="0" collapse-mode="2" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="700" y="100"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="nombre">
+		<type name="text" length="0"/>
+	</column>
+	<column name="descripcion">
+		<type name="text" length="0"/>
+	</column>
+	<column name="precio">
+		<type name="numeric" length="10" precision="4"/>
+	</column>
+	<column name="sku">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="Productos_pk" type="pk-constr" table="public.cat_productos">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<initial-data>
+<![CDATA[id•nombre•descripcion•precio•sku⸣
+0•dummy•dummy•0.0000•xxxx-xxxx-xxxx-xxxx-xxxx]]>
+	</initial-data>
+</table>
+
+<table name="ope_cotiza_creditos" layer="0" collapse-mode="2" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="440" y="360"/>
+	<column name="fk_id_plazos" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fk_id_productos" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="fecha">
+		<type name="date" length="0"/>
+	</column>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="numero_cotizacion">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="cotiza_creditos_pk" type="pk-constr" table="public.ope_cotiza_creditos">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<initial-data>
+<![CDATA[fk_id_plazos•fk_id_productos•fecha•id•numero_cotizacion⸣
+0•0•2022-01-21•0•xxxxx-999999]]>
+	</initial-data>
+</table>
+
+<constraint name="fk_cat_plazos_id" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.cat_plazos" table="public.ope_cotiza_creditos">
+	<columns names="fk_id_plazos" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="fk_cat_productos_id" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.cat_productos" table="public.ope_cotiza_creditos">
+	<columns names="fk_id_productos" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<relationship name="rel_ope_cotiza_creditos_cat_plazos" type="relfk" layer="0"
+	 src-table="public.ope_cotiza_creditos"
+	 dst-table="public.cat_plazos" reference-fk="fk_cat_plazos_id"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_ope_cotiza_creditos_cat_productos" type="relfk" layer="0"
+	 src-table="public.ope_cotiza_creditos"
+	 dst-table="public.cat_productos" reference-fk="fk_cat_productos_id"
+	 src-required="false" dst-required="true"/>
+
+</dbmodel>
