@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package com.fj.ramirez.service;
 
 import static org.junit.Assert.fail;
@@ -17,27 +20,35 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
 import com.fj.ramirez.dto.CatPlazosDto;
+import com.fj.ramirez.dto.CatProductosDto;
+import com.fj.ramirez.entities.CatProductos;
 
 import lombok.extern.log4j.Log4j;
 import uk.co.jemos.podam.api.PodamFactory;
 
+/**
+ * @author framirez21
+ *
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @TestExecutionListeners({ TransactionalTestExecutionListener.class, DependencyInjectionTestExecutionListener.class })
 @ContextConfiguration(locations = { "classpath:application-context-test.xml" })
 @Log4j
-public class CatPlazosServiceTest {
-	
+public class CatProductosServiceTest {
+
 	@Autowired
-	private CatPlazosService service;
+	private CatProductosService service;
 	
 	@Resource
 	private PodamFactory factory;
 	
-	private CatPlazosDto dto;
+	private CatProductosDto dto;
+	
+
 	
 	@Before
 	public void setUp() throws Exception {
-		this.dto = factory.manufacturePojo(CatPlazosDto.class);
+		this.dto = factory.manufacturePojo(CatProductosDto.class);
 	}
 
 	
@@ -45,8 +56,9 @@ public class CatPlazosServiceTest {
 	public void tearDown() throws Exception {
 		this.dto = null;
 	}
-
-	@Ignore
+	/**
+	 * Test method for {@link com.fj.ramirez.service.impl.CatProductosServiceImpl#findById(java.lang.Integer)}.
+	 */
 	@Test
 	public void testFindById() {
 		try {
@@ -55,25 +67,32 @@ public class CatPlazosServiceTest {
 			log.error(e);
 		}
 	}
-
+	/**
+	 * Test method for {@link com.fj.ramirez.service.impl.CatProductosServiceImpl#listAll()}.
+	 */
 	@Ignore
 	@Test
 	public void testListAll() {
+
 		try {
-			for(CatPlazosDto plazo : service.listAll()) {
+			for(CatProductosDto plazo : service.listAll()) {
 				log.info(plazo);
 			}
 		} catch (ServiceException e) {
 			log.error(e);
 			e.printStackTrace();
+		
 		}
+		
 	}
-	
+
+	/**
+	 * Test method for {@link com.fj.ramirez.service.impl.CatProductosServiceImpl#save(com.fj.ramirez.dto.CatProductosDto)}.
+	 */
 	@Ignore
 	@Test
 	public void testSave() {
-		
-		log.info("*******************SAVE***PLAZOS");
+		log.info("*******************SAVE***PRODUCTOS");
 		try {
 			this.dto.setId(null);
 			log.info(dto.toString());
@@ -84,12 +103,16 @@ public class CatPlazosServiceTest {
 		}
 	}
 
-	
+	/**
+	 * Test method for {@link com.fj.ramirez.service.impl.CatProductosServiceImpl#update(com.fj.ramirez.dto.CatProductosDto)}.
+	 */
+	@Ignore
 	@Test
 	public void testUpdate() {
+
 		try {
-			CatPlazosDto dto = service.findById(1);
-			dto.setNumeroSemanas(2);
+			CatProductosDto dto = service.findById(1);
+			dto.getPrecio();
 			service.update(dto);
 		} catch (ServiceException e) {
 			log.error(e);
@@ -97,27 +120,31 @@ public class CatPlazosServiceTest {
 		}
 	}
 
+	/**
+	 * Test method for {@link com.fj.ramirez.service.impl.CatProductosServiceImpl#delete(com.fj.ramirez.dto.CatProductosDto)}.
+	 */
 	@Ignore
 	@Test
 	public void testDelete() {
-		try {
-			service.delete(1);
-		} catch (ServiceException e) {
-			log.error(e);
-			e.printStackTrace();
-		}
+		fail("Not yet implemented");
 	}
 
+	/**
+	 * Test method for {@link com.fj.ramirez.service.impl.CatProductosServiceImpl#saveAll(java.util.Collection)}.
+	 */
 	@Ignore
 	@Test
 	public void testSaveAll() {
 		fail("Not yet implemented");
 	}
 
+	/**
+	 * Test method for {@link com.fj.ramirez.service.impl.CatProductosServiceImpl#saveOrUpdate(com.fj.ramirez.dto.CatProductosDto)}.
+	 */
 	@Ignore
 	@Test
 	public void testSaveOrUpdate() {
 		fail("Not yet implemented");
 	}
-	
+
 }
