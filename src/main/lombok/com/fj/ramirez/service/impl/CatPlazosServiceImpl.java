@@ -25,7 +25,7 @@ import lombok.extern.log4j.Log4j;
  *
  */
 @Log4j
-@Service
+@Service("catPlazosService")
 public class CatPlazosServiceImpl implements CatPlazosService {
 
 	@Autowired

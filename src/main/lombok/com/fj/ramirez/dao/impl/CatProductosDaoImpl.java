@@ -5,6 +5,10 @@ package com.fj.ramirez.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import com.fj.ramirez.dao.AbstractHibernate4CatalogsDaoImpl;
@@ -30,6 +34,13 @@ public class CatProductosDaoImpl extends AbstractHibernate4CatalogsDaoImpl<CatPr
 	@Override
 	public List<CatProductos> listAll() throws Exception {
 		return getHibernateTemplate().loadAll(CatProductos.class);
+	}
+
+	@Override
+	public List<CatProductos> searchProductsBySKU(String sku) throws DataAccessException {
+		Criteria criteria = getHibernateTemplate().getSessionFactory().getCurrentSession().createCriteria(CatProductos.class);
+		criteria.add(Restrictions.like("sku", sku, MatchMode.ANYWHERE));
+		return criteria.list();
 	}
 
 }
