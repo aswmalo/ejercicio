@@ -6,6 +6,7 @@ package com.fj.ramirez.managed;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
@@ -37,7 +38,7 @@ public class OpeCotizaCreditoMb implements Serializable {
 	
 	
 	
-	
+	@PostConstruct
 	public void init() {
 		setPlazos(opeCotizaCreditoController.getPlazos());
 	}

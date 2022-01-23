@@ -19,7 +19,7 @@ public class CatPlazoControllerImpl implements CatPlazoController {
 
 	@Override
 	public List<CatPlazosDto> listAll() {
-List<CatPlazosDto> items = new ArrayList<CatPlazosDto>();
+		List<CatPlazosDto> items = new ArrayList<CatPlazosDto>();
 		
 		return items;
 	}
