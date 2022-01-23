@@ -26,4 +26,5 @@ public interface CatProductosService extends GenericService<CatProductosDto, Cat
 		ModelMapper mapper = new ModelMapper();
 		return mapper.map(source, CatProductos.class);
 	}
+	void delete(Integer id) throws ServiceException;
 }

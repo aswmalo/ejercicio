@@ -101,6 +101,18 @@ public class CatProductosServiceImpl  implements CatProductosService {
 		
 	}
 
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void delete(Integer id) throws ServiceException {
+		try {
+			dao.delete(id);
+		} catch (Exception e) {
+			log.error(e);
+			e.printStackTrace();
+		}
+		
+	}
+
 
 
 }

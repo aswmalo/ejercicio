@@ -5,6 +5,8 @@ package com.fj.ramirez.service;
 
 import static org.junit.Assert.fail;
 
+import java.math.BigDecimal;
+
 import javax.annotation.Resource;
 
 import org.junit.After;
@@ -19,9 +21,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
-import com.fj.ramirez.dto.CatPlazosDto;
 import com.fj.ramirez.dto.CatProductosDto;
-import com.fj.ramirez.entities.CatProductos;
 
 import lombok.extern.log4j.Log4j;
 import uk.co.jemos.podam.api.PodamFactory;
@@ -59,6 +59,7 @@ public class CatProductosServiceTest {
 	/**
 	 * Test method for {@link com.fj.ramirez.service.impl.CatProductosServiceImpl#findById(java.lang.Integer)}.
 	 */
+	@Ignore
 	@Test
 	public void testFindById() {
 		try {
@@ -112,7 +113,6 @@ public class CatProductosServiceTest {
 
 		try {
 			CatProductosDto dto = service.findById(1);
-			dto.getPrecio();
 			service.update(dto);
 		} catch (ServiceException e) {
 			log.error(e);
@@ -123,10 +123,15 @@ public class CatProductosServiceTest {
 	/**
 	 * Test method for {@link com.fj.ramirez.service.impl.CatProductosServiceImpl#delete(com.fj.ramirez.dto.CatProductosDto)}.
 	 */
-	@Ignore
+	
 	@Test
 	public void testDelete() {
-		fail("Not yet implemented");
+		try {
+			service.delete(1);
+		} catch (ServiceException e) {
+			log.error(e);
+			e.printStackTrace();
+		}
 	}
 
 	/**

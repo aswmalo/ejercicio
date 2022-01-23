@@ -5,6 +5,10 @@ package com.fj.ramirez.service;
 
 import static org.junit.Assert.fail;
 
+import javax.annotation.Resource;
+
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,6 +22,7 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 import com.fj.ramirez.dto.OpeCotizaCreditosDto;
 
 import lombok.extern.log4j.Log4j;
+import uk.co.jemos.podam.api.PodamFactory;
 
 /**
  * @author framirez21
@@ -32,6 +37,22 @@ public class OpeCotizaCreditosServiceTest {
 	
 	@Autowired
 	private OpeCotizaCreditosService service;
+	
+	@Resource
+	private PodamFactory factory;
+	
+	private OpeCotizaCreditosDto dto;
+	
+	@Before
+	public void setUp() throws Exception {
+		this.dto = factory.manufacturePojo(OpeCotizaCreditosDto.class);
+	}
+
+	
+	@After
+	public void tearDown() throws Exception {
+		this.dto = null;
+	}
 
 	/**
 	 * Test method for {@link com.fj.ramirez.service.impl.OpeCotizaCreditosServiceImpl#findById(java.lang.Integer)}.
@@ -68,7 +89,15 @@ public class OpeCotizaCreditosServiceTest {
 	@Ignore
 	@Test
 	public void testSave() {
-		fail("Not yet implemented");
+		log.info("*******************SAVE***PRODUCTOS");
+		try {
+			this.dto.setId(null);
+			log.info(dto.toString());
+			service.save(dto);
+		} catch (ServiceException e) {
+			log.error(e);
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -77,7 +106,13 @@ public class OpeCotizaCreditosServiceTest {
 	@Ignore
 	@Test
 	public void testUpdate() {
-		fail("Not yet implemented");
+		try {
+			OpeCotizaCreditosDto dto = service.findById(1);
+			service.update(dto);
+		} catch (ServiceException e) {
+			log.error(e);
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -113,7 +148,12 @@ public class OpeCotizaCreditosServiceTest {
 	@Ignore
 	@Test
 	public void testDeleteInteger() {
-		fail("Not yet implemented");
+		try {
+			service.delete(1);
+		} catch (ServiceException e) {
+			log.error(e);
+			e.printStackTrace();
+		}
 	}
 
 }
