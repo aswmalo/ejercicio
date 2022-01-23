@@ -42,13 +42,15 @@ public class OpeCotizaCreditoCoreImpl implements OpeCotizaCreditoCore {
 		try {
 			CatProductosDto proDto = productosService.findById(dto.getFkIdProductos());
 			CatPlazosDto plaDto = plazosService.findById(dto.getFkIdPlazos());
-			BigDecimal dividendoNormal = proDto.getPrecio().multiply(plaDto.getTasaNormal()).add( proDto.getPrecio())  ;
-			BigDecimal divisorNormal =new BigDecimal(plaDto.getNumeroSemanas());	
-			abonoNormal = dividendoNormal.divide(divisorNormal);
-		
-			BigDecimal dividendoPuntual = proDto.getPrecio().multiply(plaDto.getTasaPuntual()).add( proDto.getPrecio());
-			BigDecimal divisorPuntual = new BigDecimal(plaDto.getNumeroSemanas());	
-			abonoPuntual = dividendoPuntual.divide(divisorPuntual);
+			abonoNormal = ((proDto.getPrecio().multiply(plaDto.getTasaNormal())).add(proDto.getPrecio()));
+			log.info(abonoNormal);
+			abonoNormal = new BigDecimal(abonoNormal.longValue()/plaDto.getNumeroSemanas());
+			
+			
+			
+			abonoPuntual = ((proDto.getPrecio().multiply(plaDto.getTasaPuntual())).add(proDto.getPrecio()));
+			log.info(abonoPuntual);
+			abonoPuntual = new BigDecimal(abonoPuntual.longValue()/plaDto.getNumeroSemanas());
 			dto.setCalculateNormal(abonoNormal);
 			dto.setCalculatePuntual(abonoPuntual);
 			log.info(dto.toString());
