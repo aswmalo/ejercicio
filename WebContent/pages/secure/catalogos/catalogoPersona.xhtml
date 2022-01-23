@@ -1,0 +1,202 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/pages/templates/templateBase.xhtml">
+	<ui:define name="content">
+
+		<h:form id="formPersona">
+
+			<p:panel id="panelPersona">
+
+				<p:messages globalOnly="true" />
+
+				<p:panel id="pnlDatos" header="Persons" style="display:block; text-align:left" >
+
+					<p:dataTable id="dataTablePersonas" value="#{personaManagedBean.personaList}" var="list"
+						paginator="true" paginatorAlwaysVisible="false" rows="10"
+						pageLinks="5" style="width: 900px; margin-left: auto; margin-right: auto;"
+						emptyMessage="#{labels['tabla.vacia']}">
+						<f:facet name="header">
+							<h:outputText value="Persons List" />
+						</f:facet>
+						<p:column style="width: 70px;" styleClass="centrarElemento" exportable="false">
+							<f:facet name="header">
+								<p:commandLink actionListener="#{personaManagedBean.selectAll}" 
+								value="#{labels['common.action.select.all']}" update="dataTablePersonas"
+								partialSubmit="true" process="@this"/>
+							</f:facet>
+							<p:selectBooleanCheckbox value="#{list.selectedElement}"/>
+						</p:column>
+						
+						
+						<p:column style="width: 50px;">
+							<f:facet name="header">
+								<h:outputText value="#{labels['com.fj.ramirez.CatPersona.name']}" />
+							</f:facet>
+							<h:outputText value="#{list.name}" />
+						</p:column>
+						<p:column style="width: 50px;">
+							<f:facet name="header">
+								<h:outputText value="#{labels['com.fj.ramirez.CatPersona.lastName']}" />
+							</f:facet>
+							<h:outputText value="#{list.lastName}" />
+						</p:column>
+						<p:column style="width: 80px;">
+							<f:facet name="header">
+								<h:outputText value="#{labels['com.fj.ramirez.CatPersona.secondLastName']}" />
+							</f:facet>
+							<h:outputText value="#{list.secondLastName}" />
+						</p:column>
+						<p:column style="width: 120px;">
+							<f:facet name="header">
+								<h:outputText value="#{labels['com.fj.ramirez.CatPersona.address']}" />
+							</f:facet>
+							<h:outputText value="#{list.address}" />
+						</p:column>
+						<p:column style="width: 50px;">
+							<f:facet name="header">
+								<h:outputText value="#{labels['com.fj.ramirez.CatPersona.telephone']}" />
+							</f:facet>
+							<h:outputText value="#{list.telephone}" />
+						</p:column>
+	
+						<p:column styleClass="centrarElemento" exportable="false" style="width: 80px;">
+							<f:facet name="header">
+								<h:outputText value="#{labels['common.action.edit']}" />
+							</f:facet>
+							<p:commandButton icon="ui-icon-pencil" update=":formPersona:panelGridDialog" process="@this"
+								title="#{labels['common.action.edit']}" oncomplete="PF('createEditWidget').show();" 
+								actionListener="#{personaManagedBean.update(list)}" />
+						</p:column>
+
+					</p:dataTable>
+
+				</p:panel>
+				
+				<h:panelGrid columns="5" cellpadding="3" cellspacing="3" 
+					style="text-align: center; width: 500px;" border="0" styleClass="centrarTabla">
+						<p:commandButton value="#{labels['common.action.add']}"
+							onclick="PF('createEditWidget').show();" icon="ui-icon-plus" immediate="true" />
+						<h:panelGroup/>
+						<p:commandButton value="#{labels['common.action.delete']}" icon="ui-icon-trash"
+						actionListener="#{personaManagedBean.delete}" update="panelPersona" process="dataTablePersonas @this">
+							<p:confirm header="#{labels['common.action.delete']}" 
+							message="#{labels['mensaje.confirmacion.borrado']}" 
+							icon="ui-icon-alert" />
+						</p:commandButton>
+						<h:panelGroup/>
+						<p:commandButton value="#{labels['common.action.export']}" immediate="true"
+						icon="ui-icon-circle-arrow-s" onclick="PF('modalExporter').show();"/>
+
+				</h:panelGrid>
+
+			</p:panel>
+
+			<p:dialog id="createEditDialog" modal="true" closable="false" 
+				widgetVar="createEditWidget" header="#{labels['com.fj.ramirez.CatPersona']}">
+
+				<p:panel>
+					<h:panelGrid id="panelGridDialog" columns="3" style="display:block; text-align:left;">
+					
+						
+						<h:outputLabel for="inputName">
+							<span class="requerido">*</span>
+							<h:outputText value="#{labels['com.fj.ramirez.CatPersona.nombre.input']}" />
+						</h:outputLabel>
+						<p:inputText id="inputName" value="#{personaManagedBean.personaDTO.name}"
+							 maxlength="45" required="true"/>
+						<p:message id="messageName" for="inputName" />
+						<h:outputLabel for="inputLastName">
+							<span class="requerido">*</span>
+							<h:outputText value="#{labels['com.fj.ramirez.CatProductos.nombre.input']}" />
+						</h:outputLabel>
+						<p:inputText id="inputNombree" value="#{personaManagedBean.personaDTO.lastName}"
+							 maxlength="45" required="true"/>
+						<p:message id="messageLastName" for="inputLastName" />
+						<h:outputLabel for="inputSecondLastName">
+							<h:outputText value="#{labels['com.fj.ramirez.CatProductos.descripcion.input']}" />
+						</h:outputLabel>
+						<p:inputText id="inputDescripcion" value="#{personaManagedBean.personaDTO.secondLastName}"
+							 maxlength="45" />
+						<p:message id="messageSecondLastName" for="inputSecondLastName" />
+						<h:outputLabel for="inputPrecio">
+							<span class="requerido">*</span>
+							<h:outputText value="#{labels['com.fj.ramirez.CatProductos.precio.input']}" />
+						</h:outputLabel>
+						<p:inputText id="inputPrecion" value="#{personaManagedBean.personaDTO.address}"
+							 maxlength="150" required="true"/>
+						<p:message id="messageAddress" for="inputPrecion" />
+						<h:outputLabel for="inputSku">
+<!-- 							<span class="requerido">*</span> -->
+							<h:outputText value="#{labels['com.fj.ramirez.CatProductos.sku.input']}" />
+						</h:outputLabel>
+<!-- 						<p:inputMask id="inputTelephone" value="#{personaManagedBean.personaDTO.telephone}" -->
+<!-- 							  required="true" mask="(99)-9999-9999"/> -->
+						<p:message id="messageTelephone" for="inputSku" />
+						
+					</h:panelGrid>
+					
+					<h:panelGrid id="panelButtons" columns="3" style="display:block; text-align:center">
+						
+						<p:commandButton value="#{labels['common.action.save']}" 
+							actionListener="#{personaManagedBean.saveOrUpdate}" 
+							update="panelPersona panelGridDialog" 
+							oncomplete="handleRequest(xhr, status, args)"
+							icon="ui-icon-disk" />
+						<h:panelGroup/>
+						<p:commandButton value="#{labels['common.action.update']}"
+							oncomplete="PF('createEditWidget').hide();"
+							actionListener="#{personaManagedBean.resetInputs}"
+							immediate="true" update="panelGridDialog" icon="ui-icon-cancel">
+							<p:resetInput target="createEditDialog" />
+						</p:commandButton>
+						<p:commandButton value="#{labels['common.action.cancel']}"
+							oncomplete="PF('createEditWidget').hide();"
+							actionListener="#{personaManagedBean.resetInputs}"
+							immediate="true" update="panelGridDialog"
+							icon="ui-icon-cancel">
+							<p:resetInput target="createEditDialog" />
+						</p:commandButton>
+	
+					</h:panelGrid>				
+				</p:panel>
+
+			</p:dialog>
+			
+			<p:confirmDialog id="confirmDelete" widgetVar="confirm" global="true" >
+				<p:panelGrid id="pnlGrdConfirmDlg" columns="1" style="display:block; text-align:center">
+					<p:column>
+						<p:commandButton value="#{labels['common.label.si']}" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />  
+				    	<p:commandButton value="#{labels['common.label.no']}" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+				    </p:column>
+				</p:panelGrid>       
+		    </p:confirmDialog>
+		    
+		    <p:dialog id="exporter" modal="true" resizable="false"  
+				widgetVar="modalExporter" header="#{labels['common.action.export']}">
+				<p:panel> 
+					<p:commandButton value="#{labels['common.button.export.xls']}" 
+						onclick="PF('modalExporter').hide();" partialSubmit="true" immediate="true"
+						ajax="false">
+						<p:dataExporter target="dataTablePersonas" type="xls" fileName="Persona"/>
+					</p:commandButton>
+					<p:commandButton value="#{labels['common.button.export.csv']}" ajax="false"
+						onclick="PF('modalExporter').hide();" partialSubmit="true" immediate="true">
+						<p:dataExporter target="dataTablePersonas" type="csv" fileName="Persona"/>
+					</p:commandButton>
+					<p:commandButton value="#{labels['common.button.export.xml']}" ajax="false"
+						onclick="PF('modalExporter').hide();" partialSubmit="true" immediate="true">
+						<p:dataExporter target="dataTablePersonas" type="xml" fileName="Persona"/>
+					</p:commandButton>
+				</p:panel>
+			</p:dialog> 
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+

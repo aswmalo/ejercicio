@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+
+<!-- 	 <Resource name="ds/mysql/kuboDataSource" auth="Container" -->
+<!-- 	type="javax.sql.DataSource" username="superadmin" password="c1ut3r1mk" -->
+<!-- 	driverClassName="com.mysql.jdbc.Driver" -->
+<!-- 	url="jdbc:mysql://192.168.0.10:3306/kubo" -->
+<!-- 	initialSize="8" maxTotal="16" minIdle="4" maxIdle="8" maxWaitMillis="300" -->
+<!-- 	removeAbandonedOnBorrow="true" removeAbandonedTimeout="80" -->
+<!-- 	logAbandoned="true" /> -->
+	
+	<Resource name="ds/mysql/kuboDataSource" auth="Container"
+	type="javax.sql.DataSource" username="sa" password=""
+	driverClassName="org.hsqldb.jdbcDriver"
+	url="jdbc:hsqldb:mem:dataSource"
+	initialSize="2" maxTotal="8" minIdle="2" maxIdle="2" maxWaitMillis="300"
+	removeAbandonedOnBorrow="true" removeAbandonedTimeout="80"
+	logAbandoned="true" />
+	
+
+</Context>

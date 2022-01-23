@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	
+<h:head>
+	<title><h:outputText value="DEMO" /></title>
+	<h:outputStylesheet library="css" name="estilos.css" />
+	<h:outputScript library="js" name="javascript-functions.js" />
+</h:head>
+<h:body>
+	<table width="100%" border="0">
+		
+		<tr>
+			<td width="98%" align="center">
+				<div id="header" >
+
+					<ui:include src="/pages/common/header.xhtml" />
+
+				</div>
+			</td>
+		</tr>
+
+		
+
+		<tr>
+			<td width="98%">
+				<div id="content" class="contenido">
+
+					<ui:insert name="content" />
+
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td width="98%">
+				<div id="footer" class="pata">
+
+					<ui:include src="/pages/common/footer.xhtml" />
+
+				</div>
+			</td>
+		</tr>
+
+	</table>
+</h:body>
+</html>

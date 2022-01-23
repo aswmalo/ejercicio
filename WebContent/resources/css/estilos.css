@@ -1,0 +1,30 @@
+@CHARSET "ISO-8859-1";
+
+body,td,th {
+	font-family: sans-serif;
+	font-size: 12px;
+	color: #444444;
+	font-weight: lighter;
+}
+
+.login_body {
+	background-image: url('./images/bg.png');
+	
+}
+
+.requerido {
+	color: red;
+}
+
+.ui-menu-child { 
+	width: auto !important;
+}
+
+.centrarTabla{
+	margin-left: auto; 
+	margin-right: auto;
+}
+
+.centrarElemento{
+	text-align: center;
+}
