@@ -3,8 +3,11 @@
  */
 package com.fj.ramirez.service;
 
+import java.util.List;
+
 import org.modelmapper.MappingException;
 import org.modelmapper.ModelMapper;
+import org.springframework.dao.DataAccessException;
 
 import com.fj.ramirez.dto.CatProductosDto;
 import com.fj.ramirez.entities.CatProductos;
@@ -26,4 +29,7 @@ public interface CatProductosService extends GenericService<CatProductosDto, Cat
 		ModelMapper mapper = new ModelMapper();
 		return mapper.map(source, CatProductos.class);
 	}
+	
+	List<CatProductosDto> searchProductsBySKU(String sku) throws DataAccessException;
+	
 }

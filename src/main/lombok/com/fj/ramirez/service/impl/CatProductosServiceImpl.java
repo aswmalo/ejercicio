@@ -8,6 +8,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,7 +27,7 @@ import lombok.extern.log4j.Log4j;
  *
  */
 @Log4j
-@Service
+@Service("catProductosService")
 public class CatProductosServiceImpl  implements CatProductosService {
 
 	@Autowired
@@ -99,6 +100,21 @@ public class CatProductosServiceImpl  implements CatProductosService {
 	public void saveOrUpdate(CatProductosDto dto) throws ServiceException {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<CatProductosDto> searchProductsBySKU(String sku) throws DataAccessException {
+		List<CatProductosDto>result = new ArrayList<CatProductosDto>();
+		try {
+			for (CatProductos plazos : dao.searchProductsBySKU(sku)) {
+				result.add(entityToDto(plazos));
+			}
+		} catch (Exception e) {
+			log.error(e);
+			e.printStackTrace();
+			
+		}
+		return result;
 	}
 
 

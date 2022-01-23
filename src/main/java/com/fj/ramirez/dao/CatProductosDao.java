@@ -3,6 +3,10 @@
  */
 package com.fj.ramirez.dao;
 
+import java.util.List;
+
+import org.springframework.dao.DataAccessException;
+
 import com.fj.ramirez.entities.CatProductos;
 
 /**
@@ -10,5 +14,7 @@ import com.fj.ramirez.entities.CatProductos;
  *
  */
 public interface CatProductosDao extends CatalogsDao<CatProductos, Integer> {
+
+	List<CatProductos> searchProductsBySKU(String sku) throws DataAccessException;
 
 }
