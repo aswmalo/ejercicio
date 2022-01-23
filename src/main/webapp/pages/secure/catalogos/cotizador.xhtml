@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:panelGrid>
+
+	<h:panelGrid columns="2">
+
+		<h:panelGrid columns="1">
+			<h:outputText value="Plazo:" />
+			<p:selectOneMenu value="#{opeCotizaCreditoMb.dto.fkIdPlazos}">
+				<f:selectItems value="#{opeCotizaCreditoMb.plazos}" />
+			</p:selectOneMenu>
+		</h:panelGrid>
+		<h:panelGrid columns="1">
+			<h:outputText value="Producto:" />
+			<p:selectOneMenu value="#{opeCotizaCreditoMb.dto.fkIdProductos}">
+				<f:selectItems value="#{opeCotizaCreditoMb.productos}" />
+			</p:selectOneMenu>
+		</h:panelGrid>
+
+	</h:panelGrid>
+	
+	<p:commandButton value="Calcular" actionListener="#{opeCotizaCreditoMb.cotizar}" update="cotiza" ajax="true" 
+		process="@this" partialSubmit="true"/>
+
+	<h:panelGroup id="cotiza">
+	<h:panelGrid columns="2">
+		<h:panelGrid columns="1">
+			<h:outputText value="PAGO PUNTUAL" />
+			<h:outputText value="#{opeCotizaCreditoMb.dto.calculatePuntual}" />
+		</h:panelGrid>
+
+		<h:panelGrid columns="1">
+			<h:outputText value="PAGO NORMAL" />
+			<h:outputText value="#{opeCotizaCreditoMb.dto.calculateNormal}" />
+		</h:panelGrid>
+
+	</h:panelGrid>
+	</h:panelGroup>
+
+</h:panelGrid>
+
+</html>
