@@ -17,7 +17,6 @@ import com.fj.ramirez.dto.OpeCotizaCreditosDto;
 import com.fj.ramirez.service.CatPlazosService;
 import com.fj.ramirez.service.CatProductosService;
 import com.fj.ramirez.service.ServiceException;
-import com.sun.tools.javac.util.Log;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;

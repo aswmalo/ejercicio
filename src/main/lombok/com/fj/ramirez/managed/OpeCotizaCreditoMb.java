@@ -11,13 +11,10 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.model.SelectItem;
 
-import org.hibernate.sql.Select;
-
 import com.fj.ramirez.controller.OpeCotizaCreditoController;
 import com.fj.ramirez.dto.OpeCotizaCreditosDto;
 
 import lombok.Data;
-import lombok.Setter;
 
 /**
  * @author ccerrillo
