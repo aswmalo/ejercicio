@@ -16,7 +16,7 @@
 		
 <context:property-placeholder location="classpath:database.properties, classpath:configuration.properties" />
 	
-	<bean id="podamFactory" class="uk.co.jemos.podam.api.PodamFactoryImpl" />
+<!-- 	<bean id="podamFactory" class="uk.co.jemos.podam.api.PodamFactoryImpl" /> -->
 	
 <!-- 	<bean name="dataSource" class="org.apache.commons.dbcp.BasicDataSource"> -->
 <!-- 		<property name="driverClassName" value="${database.driver.postgres}" /> -->
