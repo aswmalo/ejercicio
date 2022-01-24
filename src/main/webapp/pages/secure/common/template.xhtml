@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+<!-- 	<link rel="icon"  -->
+<!--       type="image/png"  -->
+<!--       href="https://sanent.org/images/user.png"/> -->
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+		name='viewport' />
+	<!-- <link rel="icon" type="image/x-icon" href="../../../../resources/images/favicon.ico"/> -->
+	<h:outputScript library="js" name="general-functions.js" />
+	<h:outputStylesheet library="css" name="webapp-style.css" />
+
+	<title>ADMIN</title>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+
+</h:head>
+<h:body>
+	<table width="100%">
+		<tr>
+			<td>
+				<div id="header">
+					<ui:include src="/pages/common/header.xhtml"  />
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div id="menu">
+					<ui:include src="/pages/secure/common/menu.xhtml"  />
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div id="content" class="contenido">
+					<ui:insert name="content" />
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div id="footer">
+					<ui:include src="/pages/common/footer.xhtml" />
+				</div>
+			</td>
+		</tr>
+
+	</table>
+</h:body>
+</html>

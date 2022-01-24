@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" > 
+
+<ui:composition>
+	<h:form id="menuForm">
+	<!-- DESCOMENTAR cuando se tenga definido el menu -->
+	<!--
+	<p:menubar id="menuBar" model="AQUI EL MB DEL MENU" >
+	-->
+	<p:menubar id="menuBar" >	
+	
+		
+			 <p:submenu label="#{labels['menu.operation']}" icon="pi pi-user" style="font-size: 12px;">
+                <p:menuitem value="Plazos" style="font-size: 12px;" outcome="plazos"/>
+                <p:menuitem value="Productos" style="font-size: 12px;" outcome="productos"/>
+             </p:submenu>
+             
+             <p:submenu label="#{labels['menu.operation']}" icon="pi pi-user" style="font-size: 12px;">
+             	<p:menuitem value="Cotizador de productos" style="font-size: 12px;"/>
+             </p:submenu>
+		
+	
+		<f:facet name="options">  
+			<p:commandButton type="button" title="#{labels['common.action.help']}" style="margin-right:10px;" icon="ui-icon-help"/>
+			<p:commandButton type="button" title="#{labels['common.action.change.user']}" style="margin-right:10px;" icon="ui-icon-person"/>
+            <p:commandButton type="submit" title="#{labels['common.action.exit']}" icon="ui-icon-extlink" action="AGREGAR_MB_CONTROLADOR" ajax="false" immediate="true"/>  
+        </f:facet> 
+	</p:menubar>
+	</h:form>
+</ui:composition>
+ 
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/pages/secure/common/template.xhtml">
+	<ui:define name="content">
+	<h:form id="catalog_form">
+		<p:panel id="form_panel">
+			<ui:include src="/pages/secure/catalogos/plazos/sections/plazos-datatable.xhtml" >
+				<ui:param name="data" value="#{catPlazosMb.plazos}" />
+			</ui:include>
+			<h:panelGrid columns="5">
+				<p:commandButton value="#{labels['common.action.add']}" 
+					actionListener="#{adminSimsMb.add}" 
+					process="@this" ajax="true" onclick="PF('createEditDialog').show()"/>
+				<h:panelGroup/>  
+				<p:commandButton value="#{labels['common.action.delete']}" 
+					actionListener="#{adminSimsMb.delete}"/>
+				<h:panelGroup/>
+				<p:commandButton value="#{labels['common.action.export']}"/>
+			</h:panelGrid>
+		</p:panel>
+		<p:dialog id="edit_dialog" widgetVar="edit_dialog" closable="false">
+<!-- 			<h:panelGrid columns="1" id="edit_grid"> -->
+<!-- 				<ui:include src="/pages/secure/modules/operation/sims/sections/panel.xhtml" > -->
+<!-- 				<ui:param name="dto" value="#{adminSimsMb.dto}" /> -->
+<!-- 			</ui:include> -->
+<!-- 			</h:panelGrid> -->
+<!-- 			<h:panelGrid columns="5"> -->
+<!-- 				<p:commandButton value="#{labels['common.action.save']}"  -->
+<!-- 					actionListener="#{adminSimsMb.saveOrUpdate}"/> -->
+<!-- 				<h:panelGroup/> -->
+<!-- 				<p:commandButton value="#{labels['common.button.reset']}"  -->
+<!-- 					actionListener="#{adminSimsMb.reset}"/> -->
+<!-- 				<h:panelGroup/> -->
+<!-- 				<p:commandButton value="#{labels['common.button.close']}"  -->
+<!-- 					actionListener="#{adminSimsMb.close}"  -->
+<!-- 					onclick="PF('createEditDialog').hide()"/> -->
+<!-- 			</h:panelGrid> -->
+		</p:dialog>
+	</h:form>
+	</ui:define>
+</ui:composition>
+	
+	

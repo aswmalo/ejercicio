@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+		<p:dataTable id="datatable" value="#{elements_to_iterate}" var="item" 
+		paginator="true" paginatorAlwaysVisible="false" rows="10" paginatorPosition="bottom"
+		pageLinks="5" style="width: 100%; margin-left: auto; margin-right: auto;"
+		emptyMessage="#{labels['tabla.vacia']}">
+		
+		<f:facet name="header">
+			<h:outputText value="Cotizar producto"  />
+		</f:facet>
+		
+		<p:column headerText ="SKU" styleClass="columna-15"
+		filterBy="#{item.sku}" filterMatchMode="contains">
+			<h:outputText value="#{item.sku}" />
+		</p:column>
+		<p:column headerText ="nombre" styleClass="columna-15"
+		filterBy="#{item.nombre}" filterMatchMode="contains">
+			<h:outputText value="#{item.nombre}" />
+		</p:column>
+		<p:column headerText ="descripcion" styleClass="columna-15"
+		filterBy="#{item.descripcion}" filterMatchMode="contains">
+			<h:outputText value="#{item.descripcion}" />
+		</p:column>
+		<p:column headerText ="plazos" styleClass="columna-15"
+		filterBy="#{item.plazos}" filterMatchMode="contains">
+			<h:outputText value="#{item.plazos}" />
+		</p:column>
+		<p:column headerText ="montosNormal" styleClass="columna-15"
+		filterBy="#{item.montoNormal}" filterMatchMode="contains">
+			<h:outputText value="#{item.montoNormal}" />
+		</p:column>
+		<p:column headerText ="montosPuntual" styleClass="columna-15"
+		filterBy="#{item.montoNormal}" filterMatchMode="contains">
+			<h:outputText value="#{item.montoPuntual}" />
+		</p:column>
+	
+		
+		</p:dataTable>
+</html>

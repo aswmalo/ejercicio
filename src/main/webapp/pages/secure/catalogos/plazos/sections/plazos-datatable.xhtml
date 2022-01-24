@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+		<p:dataTable id="datatable" value="#{data}" var="item" 
+		paginator="true" paginatorAlwaysVisible="false" rows="10" paginatorPosition="bottom"
+		pageLinks="5" style="width: 100%; margin-left: auto; margin-right: auto;"
+		emptyMessage="#{labels['tabla.vacia']}">
+		
+		<f:facet name="header">
+			<h:outputText value="Listado de plazos"  />
+		</f:facet>
+		
+		<p:column headerText="Numero semanas" styleClass="columna-15" >
+<!-- 		filterBy="#{item.semanas}" filterMatchMode="contains"> -->
+			<h:outputText value="#{item.numeroSemanas}" />
+		</p:column>
+		<p:column headerText="Tasa normal" styleClass="columna-15">
+<!-- 		filterBy="#{item.msisdn}" filterMatchMode="contains"> -->
+			<h:outputText value="#{item.tasaNormal}" />
+		</p:column>
+		<p:column headerText="Tasa puntual" styleClass="columna-15">
+<!-- 		filterBy="#{item.msisdn}" filterMatchMode="contains"> -->
+			<h:outputText value="#{item.tasaPuntual}" />
+		</p:column>
+		
+		
+		
+		
+		
+		
+		
+		</p:dataTable>
+		
+		
+	</html>

@@ -259,7 +259,7 @@
 							<path>/ejercicio</path>
 							<httpPort>8080</httpPort>
 							<ajpPort>8009</ajpPort>
-							<contextFile>../conf/snapshot/context.xml</contextFile>
+							<contextFile>conf/snapshot/context.xml</contextFile>
 						</configuration>
 						<dependencies>
 							<dependency>

@@ -4,13 +4,14 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
 	<application>
-<!-- 		<locale-config> -->
-<!-- 			<default-locale>es_MX</default-locale> -->
+		<locale-config>
+			<default-locale>es_MX</default-locale>
 <!-- 			<supported-locale>en_US</supported-locale> -->
-<!-- 		</locale-config> -->
+		</locale-config>
 		<message-bundle>javax.faces.Messages</message-bundle>
 		<resource-bundle>
 			<base-name>application_labels</base-name>
+			
 			<var>labels</var>
 		</resource-bundle>
 		<el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>

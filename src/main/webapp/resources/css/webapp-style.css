@@ -28,3 +28,11 @@ body,td,th {
 .centrarElemento{
 	text-align: center;
 }
+.centerLogin{
+	display:block; 
+	left: auto;
+	right: auto;
+	position: relative;
+	margin-left: 45%;
+	margin-right: auto;
+}

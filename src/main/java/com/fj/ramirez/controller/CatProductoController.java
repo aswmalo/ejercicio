@@ -17,7 +17,7 @@ public interface CatProductoController extends Serializable {
 
 	List<CatProductosDto> listAll();
 	
-	CatProductos findById(Integer id);
+	CatProductosDto findById(Integer id);
 	
 	
 	void saveOrUpdate(CatProductos dto);

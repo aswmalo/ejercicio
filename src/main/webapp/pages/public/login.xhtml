@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/pages/templates/templateBase.xhtml">
+	
+	<ui:define name="content">
+		
+		<h:panelGrid id="loginGrid" columns="1" styleClass="centerLogin">
+			<h:form id="loginForm">
+				<h:panelGrid columns="1">
+
+					<h:outputLabel for="j_username">
+						<span class="requerido">*</span>
+						<h:outputText value="#{labels['login.input.username']}" />
+					</h:outputLabel>
+					<p:inputText id="j_username" required="true" value="#{loginBean.username}">
+						<f:validateLength minimum="5" maximum="15" />
+					</p:inputText>
+					<p:message for="j_username" />
+				</h:panelGrid>
+
+				<h:panelGrid columns="1">
+					<h:outputLabel for="j_password">
+						<span class="requerido">*</span>
+						<h:outputText value="#{labels['login.input.password']}" />
+					</h:outputLabel>
+					<p:password id="j_password" required="true" value="#{loginBean.password}">
+						<f:validateLength minimum="8" maximum="20" />
+					</p:password>
+					<p:message for="j_password" />
+				</h:panelGrid>
+
+				<p:separator />
+
+				<h:panelGrid columns="3" cellpadding="3" cellspacing="3">
+<!-- 					<p:commandButton id="loginButton" value="#{labels['common.action.login']}" ajax="false" action="#{loginController.login}" /> -->
+<!-- 					<p:commandButton id="loginButton" value="#{labels['common.action.login']}" action="#{loginController.login}" ajax="false" /> -->
+					<p:commandButton id="loginButton" value="#{labels['common.action.login']}" action="success" ajax="false" immediate="true" />
+					<h:panelGroup />
+					<p:commandButton id="recoveryButton" value="#{labels['common.action.recover']}" immediate="true" />
+				</h:panelGrid>
+			</h:form>
+		</h:panelGrid>
+	
+	</ui:define>
+	
+	
+	</ui:composition>

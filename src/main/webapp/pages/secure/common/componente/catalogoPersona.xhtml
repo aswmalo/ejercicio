@@ -14,7 +14,7 @@
 
 				<p:messages globalOnly="true"/>
 
-				<p:panel id="pnlDatos" header="Persons" style="display:block; text-align:left" >
+				<p:panel id="pnlDatos" header="Plazos" style="display:block; text-align:left" >
 
 					<p:dataTable id="dataTablePersonas" value="#{personaManagedBean.personaList}" var="list"
 						paginator="true" paginatorAlwaysVisible="false" rows="10"
@@ -39,28 +39,28 @@
 						</p:column>
 						<p:column style="width: 50px;">
 							<f:facet name="header">
-								<h:outputText value="#{labels['com.fj.ramirez.CatPersona.lastName']}" />
+								<h:outputText value="#{labels['com.fj.ramirez.CatPlazos.numeroSemanas']}" />
 							</f:facet>
-							<h:outputText value="#{list.lastName}" />
+							<h:outputText value="#{list.numeroSemanas}" />
 						</p:column>
 						<p:column style="width: 80px;">
 							<f:facet name="header">
-								<h:outputText value="#{labels['com.fj.ramirez.CatPersona.secondLastName']}" />
+								<h:outputText value="#{labels['com.fj.ramirez.CatPlazos.tasaNormal']}" />
 							</f:facet>
-							<h:outputText value="#{list.secondLastName}" />
+							<h:outputText value="#{list.tasaNormal}" />
 						</p:column>
 						<p:column style="width: 120px;">
 							<f:facet name="header">
-								<h:outputText value="#{labels['com.fj.ramirez.CatPersona.address']}" />
+								<h:outputText value="#{labels['com.fj.ramirez.CatPlazos,tasaPuntual']}" />
 							</f:facet>
-							<h:outputText value="#{list.address}" />
+							<h:outputText value="#{list.tasaPuntual}" />
 						</p:column>
-						<p:column style="width: 50px;">
-							<f:facet name="header">
-								<h:outputText value="#{labels['com.fj.ramirez.CatPersona.telephone']}" />
-							</f:facet>
-							<h:outputText value="#{list.telephone}" />
-						</p:column>
+<!-- 						<p:column style="width: 50px;"> -->
+<!-- 							<f:facet name="header"> -->
+<!-- 								<h:outputText value="#{labels['com.fj.ramirez.CatPersona.telephone']}" /> -->
+<!-- 							</f:facet> -->
+<!-- 							<h:outputText value="#{list.telephone}" /> -->
+<!-- 						</p:column> -->
 	
 						<p:column styleClass="centrarElemento" exportable="false" style="width: 80px;">
 							<f:facet name="header">
