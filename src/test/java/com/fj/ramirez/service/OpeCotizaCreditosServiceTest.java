@@ -5,6 +5,8 @@ package com.fj.ramirez.service;
 
 import static org.junit.Assert.fail;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.junit.After;
@@ -19,6 +21,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 
+import com.fj.ramirez.dto.OpeCotizaCreditoViewDto;
 import com.fj.ramirez.dto.OpeCotizaCreditosDto;
 
 import lombok.extern.log4j.Log4j;
@@ -155,5 +158,12 @@ public class OpeCotizaCreditosServiceTest {
 			e.printStackTrace();
 		}
 	}
+	
+//	
+//	@Test
+//	public List<OpeCotizaCreditoViewDto> listCotizacionesTest(){
+//		List<OpeCotizaCreditoViewDto> listCot =  new ArrayList<OpeCotizaCreditoViewDto>();
+//
+//	}
 
 }

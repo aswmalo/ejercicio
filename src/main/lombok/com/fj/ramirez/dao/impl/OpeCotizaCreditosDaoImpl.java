@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.fj.ramirez.dao.AbstractHibernate4DaoImpl;
 import com.fj.ramirez.dao.OpeCotizaCreditosDao;
 import com.fj.ramirez.entities.OpeCotizaCreditos;
+import com.fj.ramirez.entities.OpeCotizaCreditosView;
 
 import lombok.extern.log4j.Log4j;
 
@@ -29,6 +30,11 @@ public class OpeCotizaCreditosDaoImpl extends AbstractHibernate4DaoImpl<OpeCotiz
 	@Override
 	public List<OpeCotizaCreditos> listAll() throws Exception {
 		return getHibernateTemplate().loadAll(OpeCotizaCreditos.class);
+	}
+
+	@Override
+	public List<OpeCotizaCreditosView> listCotizaciones() {
+		return getHibernateTemplate().loadAll(OpeCotizaCreditosView.class);
 	}
 
 }

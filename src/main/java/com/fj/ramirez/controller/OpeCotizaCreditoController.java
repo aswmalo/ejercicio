@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.faces.model.SelectItem;
 
+import com.fj.ramirez.dto.OpeCotizaCreditoViewDto;
 import com.fj.ramirez.dto.OpeCotizaCreditosDto;
 
 /**
@@ -22,5 +23,7 @@ public interface OpeCotizaCreditoController extends Serializable {
 	List<SelectItem> getPlazos();
 	
 	List<SelectItem> getProductosBySKU(String sku);
+	
+	List<OpeCotizaCreditoViewDto> listCotizaciones();
 
 }

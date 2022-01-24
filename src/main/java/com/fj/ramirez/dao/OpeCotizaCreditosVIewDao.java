@@ -14,12 +14,10 @@ import com.fj.ramirez.entities.OpeCotizaCreditosView;
  * @author framirez21
  *
  */
-public interface OpeCotizaCreditosDao extends GenericDao<OpeCotizaCreditos, Integer> {
-
-	List<OpeCotizaCreditosView> listCotizaciones();
+public interface OpeCotizaCreditosVIewDao extends GenericDao<OpeCotizaCreditosView, Integer> {
 	
 	
-//	List<OpeCotizaCreditosView> searchCotiza(OpeCotizaCreditos criteria) throws DataAccessException;
+	List<OpeCotizaCreditosView> searchCotiza(OpeCotizaCreditos criteria) throws DataAccessException;
 	
 	
 }

@@ -10,7 +10,7 @@
 	<h:form id="catalog_form">
 		<p:panel id="form_panel">
 			<ui:include src="/pages/secure/operacion/cotizaciones/sections/cotizaciones-datatable.xhtml" >
-<!-- 				<ui:param name="data" value="#{adminSimsMb.data}" /> -->
+				<ui:param name="data" value="#{opeCotizaCreditoMb.cotizaciones}" />
 			</ui:include>
 			<h:panelGrid columns="5">
 				<p:commandButton value="#{labels['common.action.add']}" 

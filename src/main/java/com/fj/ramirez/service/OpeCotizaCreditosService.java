@@ -3,10 +3,13 @@
  */
 package com.fj.ramirez.service;
 
+import java.util.List;
+
 import org.modelmapper.MappingException;
 import org.modelmapper.ModelMapper;
 
 import com.fj.ramirez.dto.CatProductosDto;
+import com.fj.ramirez.dto.OpeCotizaCreditoViewDto;
 import com.fj.ramirez.dto.OpeCotizaCreditosDto;
 import com.fj.ramirez.entities.CatProductos;
 import com.fj.ramirez.entities.OpeCotizaCreditos;
@@ -30,4 +33,6 @@ public interface OpeCotizaCreditosService extends GenericService<OpeCotizaCredit
 	}
 	
 	void delete(Integer id) throws ServiceException;
+	
+	List<OpeCotizaCreditoViewDto> listCotizaciones() throws ServiceException;
 }

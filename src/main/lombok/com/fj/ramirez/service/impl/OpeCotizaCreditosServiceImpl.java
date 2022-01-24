@@ -3,19 +3,22 @@
  */
 package com.fj.ramirez.service.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.fj.ramirez.dao.OpeCotizaCreditosDao;
+import com.fj.ramirez.dto.OpeCotizaCreditoViewDto;
 import com.fj.ramirez.dto.OpeCotizaCreditosDto;
-import com.fj.ramirez.entities.CatPlazos;
 import com.fj.ramirez.entities.OpeCotizaCreditos;
+import com.fj.ramirez.entities.OpeCotizaCreditosView;
 import com.fj.ramirez.service.OpeCotizaCreditosService;
 import com.fj.ramirez.service.ServiceException;
 
@@ -113,5 +116,18 @@ public class OpeCotizaCreditosServiceImpl implements OpeCotizaCreditosService {
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public List<OpeCotizaCreditoViewDto> listCotizaciones() throws ServiceException{
+		List<OpeCotizaCreditoViewDto> result = new ArrayList<>();
+		for (OpeCotizaCreditosView entity : dao.listCotizaciones()) {
+			OpeCotizaCreditoViewDto dto = new OpeCotizaCreditoViewDto();
+			BeanUtils.copyProperties(dto, entity);
+			result.add(dto);
+		}
+		
+	
+	return result;
+}
 
 }

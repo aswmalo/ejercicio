@@ -4,16 +4,22 @@
 package com.fj.ramirez.core.impl;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.aspectj.apache.bcel.classfile.CodeException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.fj.ramirez.core.OpeCotizaCreditoCore;
 import com.fj.ramirez.dto.CatPlazosDto;
 import com.fj.ramirez.dto.CatProductosDto;
+import com.fj.ramirez.dto.OpeCotizaCreditoViewDto;
 import com.fj.ramirez.dto.OpeCotizaCreditosDto;
 import com.fj.ramirez.service.CatPlazosService;
 import com.fj.ramirez.service.CatProductosService;
+import com.fj.ramirez.service.OpeCotizaCreditosService;
 import com.fj.ramirez.service.ServiceException;
 
 import lombok.extern.log4j.Log4j;
@@ -31,6 +37,8 @@ public class OpeCotizaCreditoCoreImpl implements OpeCotizaCreditoCore {
 	private CatProductosService productosService;
 	@Autowired
 	private CatPlazosService plazosService;
+	@Autowired
+	private OpeCotizaCreditosService service;
 
 	@Override
 	public OpeCotizaCreditosDto cotiza(OpeCotizaCreditosDto dto) {
@@ -65,5 +73,20 @@ public class OpeCotizaCreditoCoreImpl implements OpeCotizaCreditoCore {
 		
 		return dto;
 	}
+
+	@Override
+	public List<OpeCotizaCreditoViewDto> listCotizaciones() {
+		List<OpeCotizaCreditoViewDto> result = new ArrayList<OpeCotizaCreditoViewDto>();
+		try {
+			result =  service.listCotizaciones();
+		} catch (ServiceException e) {
+			log.error(e);
+			e.printStackTrace();
+			
+		}
+		return result;
+	}
+
+
 
 }

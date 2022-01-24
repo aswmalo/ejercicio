@@ -13,7 +13,9 @@ import javax.faces.model.SelectItem;
 
 import com.fj.ramirez.controller.OpeCotizaCreditoController;
 import com.fj.ramirez.core.OpeCotizaCreditoCore;
+import com.fj.ramirez.dto.OpeCotizaCreditoViewDto;
 import com.fj.ramirez.dto.OpeCotizaCreditosDto;
+import com.fj.ramirez.entities.OpeCotizaCreditosView;
 import com.fj.ramirez.service.CatPlazosService;
 import com.fj.ramirez.service.CatProductosService;
 import com.fj.ramirez.service.ServiceException;
@@ -73,6 +75,11 @@ public class OpeCotizaCreditoControllerImpl implements OpeCotizaCreditoControlle
 //			e.printStackTrace();
 //		}
 		return items;
+	}
+
+	@Override
+	public List<OpeCotizaCreditoViewDto> listCotizaciones() {
+		return opeCotizaCreditoCore.listCotizaciones();
 	}
 
 }

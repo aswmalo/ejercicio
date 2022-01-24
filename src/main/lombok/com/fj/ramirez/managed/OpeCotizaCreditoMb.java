@@ -13,7 +13,9 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.model.SelectItem;
 
 import com.fj.ramirez.controller.OpeCotizaCreditoController;
+import com.fj.ramirez.dto.OpeCotizaCreditoViewDto;
 import com.fj.ramirez.dto.OpeCotizaCreditosDto;
+import com.fj.ramirez.entities.OpeCotizaCreditosView;
 
 import lombok.Data;
 
@@ -36,11 +38,12 @@ public class OpeCotizaCreditoMb implements Serializable {
 	private List<SelectItem> plazos;
 	private List<SelectItem> productos;
 	
-	
+	private List<OpeCotizaCreditoViewDto> cotizaciones;
 	
 	@PostConstruct
 	public void init() {
 		setPlazos(opeCotizaCreditoController.getPlazos());
+		setCotizaciones(opeCotizaCreditoController.listCotizaciones());
 	}
 	
 	
