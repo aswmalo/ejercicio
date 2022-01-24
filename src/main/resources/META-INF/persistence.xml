@@ -5,6 +5,7 @@
     <class>com.fj.ramirez.entities.OpeCotizaCreditos</class>
     <class>com.fj.ramirez.entities.CatProductos</class>
     <class>com.fj.ramirez.entities.CatPlazos</class>
+    <class>com.fj.ramirez.entities.OpeCotizaCreditosView</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://2.56.15.6:5432/ejerciciodb"/>
